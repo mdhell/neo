@@ -1,0 +1,63 @@
+<link  rel="stylesheet" href="/stylesheets/main.css">
+<h1>Results page</h1>
+
+<h2>The current number of objects in 'Near Earth Orbit' is: <%= data["element_count"] %></h2>
+
+
+<h3>Here are their names, threat potential and neo reference ID numbers :</h3>
+        
+        <div class="dates">
+            <h5><%= startDate %></h5>
+         <% for (var i=0, len=data["near_earth_objects"][startDate].length; i < len; i ++ ) { %>
+               <h5>Name <%= data["near_earth_objects"][startDate][i]["name"] %></h5>
+                  <li>Orbiting around: <%= data["near_earth_objects"][startDate][i]["close_approach_data"][0]["orbiting_body"] %></li>
+                  <li>Threat: 
+                  <% if(data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] == true) { %>
+                      <strong class="danger"><%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %></strong>
+                  <% } else { %>
+                  <%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %>
+                  <% } %>
+                  </li>
+                  <li>Miss distance (miles): <%= data["near_earth_objects"][startDate][i]["close_approach_data"][0]["miss_distance"]["miles"] %></li>
+                  <li>Diameter (miles): <%= data["near_earth_objects"][startDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"] %></li>
+                  <li>neo_reference_id: <a href=<%= data["near_earth_objects"][startDate][i]["nasa_jpl_url"] %> target=_blank><%= data["near_earth_objects"][startDate][i]["neo_reference_id"] %></a></li>
+            
+         <% } %>  
+        </div>
+         
+          
+               
+      
+          <div class="dates">
+              <h5><%= endDate %></h5>
+           <% for (var i=0, len=data["near_earth_objects"][endDate].length; i < len; i ++ ) { %>
+           
+           <h5>Name: <%= data["near_earth_objects"][endDate][i]["name"] %></h5>
+           <li>Orbiting around: <%= data["near_earth_objects"][endDate][i]["close_approach_data"][0]["orbiting_body"] %></li>
+           <li>Threat: 
+                <% if(data["near_earth_objects"][endDate][i]["is_potentially_hazardous_asteroid"] == true) { %>
+                      <strong class="danger"><%= data["near_earth_objects"][endDate][i]["is_potentially_hazardous_asteroid"] %></strong>
+                  <% } else { %>
+                  <%= data["near_earth_objects"][endDate][i]["is_potentially_hazardous_asteroid"] %>
+                  <% } %>
+           </li>
+           <li>Miss distance (miles): <%= data["near_earth_objects"][endDate][i]["close_approach_data"][0]["miss_distance"]["miles"] %></li>
+           <li>Diameter (miles): <%= data["near_earth_objects"][endDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"] %></li>
+           <li>neo_reference_id: <a href=<%= data["near_earth_objects"][endDate][i]["nasa_jpl_url"] %> target=_blank><%= data["near_earth_objects"][endDate][i]["neo_reference_id"] %></a></li>
+           
+         <% } %> 
+          </div>
+           
+
+      
+          <button><a href="/">Search for more!</a></button> 
+
+            
+            
+  
+     
+        
+          
+      
+        
+    

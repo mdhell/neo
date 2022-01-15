@@ -1,0 +1,11 @@
+.dates {
+    border: 1px solid black;
+    width: 300px;
+    margin: 50 50 50 50;
+    padding: 10 10 10 10;
+    float: left;
+}
+
+.danger {
+    color: red;
+}
